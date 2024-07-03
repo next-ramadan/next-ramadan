@@ -1,1 +1,52 @@
-<h1>Hello, World!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Next ramadan</title>
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+
+    <style>
+        #countdown {
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+        }
+    </style>
+    
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+  </head>
+  <body>
+    <h1>Make your next ramadan the best</h1>
+    <h2>do only 10m efforless preparations everyday</h2>
+
+     <div id="countdown"></div>
+
+    <script>
+        function countdown() {
+            const targetDate = new Date('February 28, 2025 18:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = 
+                days + "d " + 
+                hours + "h " + 
+                minutes + "m " + 
+                seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById('countdown').innerHTML = "EXPIRED";
+            }
+        }
+
+        const interval = setInterval(countdown, 1000);
+    </script>
+  
+    <script src="main.js"></script>
+  </body>
+</html>
